@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class AccountController {
+public class AccountResource {
 
     @Autowired
     private AccountService accountService;

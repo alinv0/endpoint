@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class TransactionController {
+public class TransactionResource {
 
     @Autowired
     private TransactionService transactionService;

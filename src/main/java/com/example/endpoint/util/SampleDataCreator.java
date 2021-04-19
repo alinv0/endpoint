@@ -4,10 +4,13 @@ import com.example.endpoint.account.AccountRepository;
 import com.example.endpoint.account.model.Account;
 import com.example.endpoint.account.model.AccountStatus;
 import com.example.endpoint.account.model.AccountType;
+import com.example.endpoint.auth.user.User;
+import com.example.endpoint.auth.user.UserRepository;
 import com.example.endpoint.transaction.TransactionRepository;
 import com.example.endpoint.transaction.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -29,10 +32,27 @@ public class SampleDataCreator implements CommandLineRunner {
     @Autowired
     private TransactionRepository transactionRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private BCryptPasswordEncoder encoder;
+
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
+        insertUsers();
         insertAccounts();
         insertTransactions();
+    }
+
+    private void insertUsers() {
+        User user = User.builder()
+                .username("admin")
+                .password(encoder.encode("admin"))
+                .build();
+
+        userRepository.deleteAll();
+        userRepository.insert(user);
     }
 
     private void insertTransactions() {
