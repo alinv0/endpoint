@@ -13,12 +13,10 @@ import java.util.Currency;
 @Document
 @Builder
 public class Transaction implements Serializable {
-
     static final long serialVersionUID = -3259758581087183859L;
 
     @Id
     String id;
-
     String accountId;
     ExchangeRate rate;
     Amount originalAmount;

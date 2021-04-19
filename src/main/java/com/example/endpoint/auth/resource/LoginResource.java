@@ -3,6 +3,7 @@ package com.example.endpoint.auth.resource;
 import com.example.endpoint.auth.model.AuthenticationRequest;
 import com.example.endpoint.auth.model.AuthenticationResponse;
 import com.example.endpoint.auth.user.UserService;
+import com.example.endpoint.auth.util.IncorrectCredentialsException;
 import com.example.endpoint.auth.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +35,7 @@ public class LoginResource {
                             authenticationRequest.getPassword())
             );
         } catch (BadCredentialsException e) {
-            throw new Exception("Incorrect username or password", e);
+            throw new IncorrectCredentialsException("Incorrect username or password", e);
         }
 
         final UserDetails userDetails = userService.loadUserByUsername(authenticationRequest.getUsername());

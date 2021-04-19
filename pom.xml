@@ -19,6 +19,8 @@
 		<java.jwt.version>3.15.0</java.jwt.version>
 		<infinispan.version>10.1.8.Final</infinispan.version>
 		<spring.security.version>5.4.5</spring.security.version>
+		<junit.version>5.7.1</junit.version>
+		<mockito.version>3.9.0</mockito.version>
 	</properties>
 
 	<dependencies>
@@ -71,9 +73,54 @@
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>junit-jupiter</groupId>
+					<artifactId>org.junit.jupiter</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>junit-vintage-engine</groupId>
+					<artifactId>org.junit.vintage</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>mockito-junit-jupiter</groupId>
+					<artifactId>org.mockito</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>${mockito.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-inline</artifactId>
+			<version>${mockito.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
+			<version>3.19.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>3.6.28</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
