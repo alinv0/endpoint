@@ -17,7 +17,7 @@ public class TransactionResource {
     @Autowired
     private TransactionService transactionService;
 
-    @GetMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Transaction> getTransactions() {
         return transactionService.getTransactions();
     }

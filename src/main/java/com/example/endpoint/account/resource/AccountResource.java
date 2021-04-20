@@ -17,7 +17,7 @@ public class AccountResource {
     @Autowired
     private AccountService accountService;
 
-    @GetMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Account> getAccounts() {
         return accountService.getAccounts();
     }
