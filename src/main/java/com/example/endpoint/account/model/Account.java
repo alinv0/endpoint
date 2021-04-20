@@ -21,5 +21,5 @@ public class Account implements Serializable {
     private String product;
     private AccountStatus status;
     private AccountType type;
-    private Double balance;
+    private double balance;
 }

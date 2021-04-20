@@ -1,12 +1,12 @@
 package com.example.endpoint.user.model;
 
 import lombok.Builder;
-import lombok.Data;
+import lombok.Value;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
 
-@Data
+@Value
 @Builder
 @Document
 public class User implements Serializable {
