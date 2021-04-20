@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
-@EnableMongoRepositories(basePackages = "com.example.endpoint.auth.user")
+@EnableMongoRepositories(basePackages = "com.example.endpoint.user.repository")
 public class AuthConfig {
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {

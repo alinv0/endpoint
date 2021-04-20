@@ -8,8 +8,8 @@ import java.util.Collection;
 import java.util.Collections;
 
 @Configuration
-@EnableMongoRepositories(basePackages = {"com.example.endpoint.account",
-                                        "com.example.endpoint.transaction"})
+@EnableMongoRepositories(basePackages = {"com.example.endpoint.account.repository",
+                                        "com.example.endpoint.transaction.repository"})
 public class MongoConfig extends AbstractMongoClientConfiguration {
 
     @Override

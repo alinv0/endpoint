@@ -3,6 +3,7 @@ package com.example.endpoint.auth.util;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +13,7 @@ import java.util.Map;
 import java.util.function.Function;
 
 @Component
+@Log4j2
 public class JwtUtil {
 
     private static final String SECRET_KEY = "secret";
@@ -35,6 +37,11 @@ public class JwtUtil {
     }
 
     public boolean validateToken(String token, UserDetails userDetails) {
+        if (isTokenExpired(token)) {
+            log.error("JWT has expired");
+            throw new RuntimeException("Token expired");
+        }
+
         final String username = extractUsername(token);
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
