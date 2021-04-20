@@ -1,7 +1,7 @@
 package com.example.endpoint.auth.filters;
 
-import com.example.endpoint.auth.user.UserService;
 import com.example.endpoint.auth.util.JwtUtil;
+import com.example.endpoint.user.servkce.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -28,12 +28,14 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String authorization = request.getHeader("Authorization");
-        if(authorization == null || !authorization.startsWith("Bearer ")) {
-            return;
-        }
 
-        String jwt = authorization.substring(7);
-        String username = jwtUtil.extractUsername(jwt);
+        String username = null;
+        String jwt = null;
+
+        if (authorization != null && authorization.startsWith("Bearer ")) {
+            jwt = authorization.substring(7);
+            username = jwtUtil.extractUsername(jwt);
+        }
 
         setAuthenticationContext(request, username, jwt);
         filterChain.doFilter(request, response);

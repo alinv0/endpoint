@@ -1,4 +1,4 @@
-package com.example.endpoint.auth.user;
+package com.example.endpoint.user.model;
 
 import lombok.Builder;
 import lombok.Data;

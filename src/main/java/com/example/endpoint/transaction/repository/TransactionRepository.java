@@ -1,4 +1,4 @@
-package com.example.endpoint.transaction;
+package com.example.endpoint.transaction.repository;
 
 import com.example.endpoint.transaction.model.Transaction;
 import org.springframework.data.mongodb.repository.MongoRepository;

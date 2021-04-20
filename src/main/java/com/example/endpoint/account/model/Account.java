@@ -9,19 +9,17 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
-@Document
 @Builder
+@Document
 public class Account implements Serializable {
-
     static final long serialVersionUID = -4715691204848611817L;
 
     @Id
-    String id;
-
-    LocalDateTime update;
-    String name;
-    String product;
-    AccountStatus status;
-    AccountType type;
-    Double balance;
+    private String id;
+    private LocalDateTime update;
+    private String name;
+    private String product;
+    private AccountStatus status;
+    private AccountType type;
+    private Double balance;
 }

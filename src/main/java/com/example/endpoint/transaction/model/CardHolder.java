@@ -10,6 +10,6 @@ import java.io.Serializable;
 public class CardHolder implements Serializable {
     static final long serialVersionUID = -3335741659908512901L;
 
-    String maskedPan;
-    String name;
+    private String maskedPan;
+    private String name;
 }

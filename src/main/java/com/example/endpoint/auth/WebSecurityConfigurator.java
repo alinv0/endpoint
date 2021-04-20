@@ -1,7 +1,7 @@
 package com.example.endpoint.auth;
 
 import com.example.endpoint.auth.filters.JwtRequestFilter;
-import com.example.endpoint.auth.user.UserService;
+import com.example.endpoint.user.servkce.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;

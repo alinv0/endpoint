@@ -1,6 +1,7 @@
-package com.example.endpoint.transaction;
+package com.example.endpoint.transaction.service;
 
 import com.example.endpoint.transaction.model.Transaction;
+import com.example.endpoint.transaction.repository.TransactionRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

@@ -16,15 +16,15 @@ public class Transaction implements Serializable {
     static final long serialVersionUID = -3259758581087183859L;
 
     @Id
-    String id;
-    String accountId;
-    ExchangeRate rate;
-    Amount originalAmount;
-    CardHolder creditor;
-    CardHolder debtor;
-    TransactionStatus status;
-    Currency currency;
-    Double amount;
-    LocalDateTime update;
-    String description;
+    private String id;
+    private String accountId;
+    private ExchangeRate rate;
+    private Amount originalAmount;
+    private CardHolder creditor;
+    private CardHolder debtor;
+    private TransactionStatus status;
+    private Currency currency;
+    private double amount;
+    private LocalDateTime update;
+    private String description;
 }

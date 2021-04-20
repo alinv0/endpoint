@@ -1,13 +1,13 @@
-package com.example.endpoint.util;
+package com.example.endpoint.initializer;
 
-import com.example.endpoint.account.AccountRepository;
 import com.example.endpoint.account.model.Account;
 import com.example.endpoint.account.model.AccountStatus;
 import com.example.endpoint.account.model.AccountType;
-import com.example.endpoint.auth.user.User;
-import com.example.endpoint.auth.user.UserRepository;
-import com.example.endpoint.transaction.TransactionRepository;
+import com.example.endpoint.account.repository.AccountRepository;
 import com.example.endpoint.transaction.model.*;
+import com.example.endpoint.transaction.repository.TransactionRepository;
+import com.example.endpoint.user.model.User;
+import com.example.endpoint.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

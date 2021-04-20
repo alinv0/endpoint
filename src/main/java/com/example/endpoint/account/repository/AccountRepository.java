@@ -1,4 +1,4 @@
-package com.example.endpoint.account;
+package com.example.endpoint.account.repository;
 
 import com.example.endpoint.account.model.Account;
 import org.springframework.data.mongodb.repository.MongoRepository;

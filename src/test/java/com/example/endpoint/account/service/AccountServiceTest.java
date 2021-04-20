@@ -1,6 +1,7 @@
-package com.example.endpoint.account;
+package com.example.endpoint.account.service;
 
 import com.example.endpoint.account.model.Account;
+import com.example.endpoint.account.repository.AccountRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

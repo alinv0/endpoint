@@ -1,5 +1,8 @@
-package com.example.endpoint.auth.user;
+package com.example.endpoint.user;
 
+import com.example.endpoint.user.model.User;
+import com.example.endpoint.user.repository.UserRepository;
+import com.example.endpoint.user.servkce.UserService;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

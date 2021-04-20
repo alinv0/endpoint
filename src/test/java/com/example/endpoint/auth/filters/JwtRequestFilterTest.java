@@ -1,7 +1,7 @@
 package com.example.endpoint.auth.filters;
 
-import com.example.endpoint.auth.user.UserService;
 import com.example.endpoint.auth.util.JwtUtil;
+import com.example.endpoint.user.servkce.UserService;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -89,21 +89,22 @@ public class JwtRequestFilterTest {
 
     @Test
     @SneakyThrows
-    public void shouldNotContinueDoFilterInternalIfAuthorizationIsNull() {
+    public void shouldAuthorizeInDoFilterInternalIfAuthorizationIsNull() {
         authorization = null;
         securityContextHolder.when(SecurityContextHolder::getContext).thenReturn(securityContext);
 
         when(request.getHeader("Authorization")).thenReturn(authorization);
 
         jwtRequestFilter.doFilterInternal(request, response, filterChain);
+
         verify(request).getHeader("Authorization");
-        verify(filterChain, never()).doFilter(request, response);
+        verify(userService, never()).loadUserByUsername(anyString());
         verify(securityContext, never()).setAuthentication(any(UsernamePasswordAuthenticationToken.class));
     }
 
     @Test
     @SneakyThrows
-    public void shouldNotContinueDoFilterInternalIfAuthorizationNotStartsWithBearer() {
+    public void shouldAuthorizeInDoFilterInternalIfAuthorizationNotStartsWithBearer() {
         authorization = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYxODc5NjYzNSwiaWF0IjoxNjE4Nzk1NzM1fQ.AserNfW7HJvvxQjJWQ7WRHP5XUwpxXdUB7yCQTmGDGo";
         securityContextHolder.when(SecurityContextHolder::getContext).thenReturn(securityContext);
 
@@ -111,7 +112,7 @@ public class JwtRequestFilterTest {
 
         jwtRequestFilter.doFilterInternal(request, response, filterChain);
         verify(request).getHeader("Authorization");
-        verify(filterChain, never()).doFilter(request, response);
+        verify(userService, never()).loadUserByUsername(anyString());
         verify(securityContext, never()).setAuthentication(any(UsernamePasswordAuthenticationToken.class));
     }
 }

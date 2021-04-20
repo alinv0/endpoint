@@ -11,6 +11,6 @@ import java.util.Currency;
 public class Amount implements Serializable {
     static final long serialVersionUID = 7759133917397061489L;
 
-    Double amount;
-    Currency currency;
+    private double amount;
+    private Currency currency;
 }

@@ -11,7 +11,7 @@ import java.util.Currency;
 public class ExchangeRate implements Serializable {
     static final long serialVersionUID = 9129321525863665630L;
 
-    Currency currencyFrom;
-    Currency currencyTo;
-    Double rate;
+    private Currency currencyFrom;
+    private Currency currencyTo;
+    private double rate;
 }

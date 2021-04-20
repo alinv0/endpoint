@@ -1,8 +1,10 @@
 package com.example.endpoint.auth.model;
 
-import lombok.Data;
+import lombok.Builder;
+import lombok.Value;
 
-@Data
+@Value
+@Builder
 public class AuthenticationRequest {
     String username;
     String password;

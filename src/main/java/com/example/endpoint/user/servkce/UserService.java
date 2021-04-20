@@ -1,5 +1,7 @@
-package com.example.endpoint.auth.user;
+package com.example.endpoint.user.servkce;
 
+import com.example.endpoint.user.model.User;
+import com.example.endpoint.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

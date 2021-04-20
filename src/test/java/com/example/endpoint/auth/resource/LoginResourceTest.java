@@ -2,9 +2,9 @@ package com.example.endpoint.auth.resource;
 
 import com.example.endpoint.auth.model.AuthenticationRequest;
 import com.example.endpoint.auth.model.AuthenticationResponse;
-import com.example.endpoint.auth.user.UserService;
 import com.example.endpoint.auth.util.IncorrectCredentialsException;
 import com.example.endpoint.auth.util.JwtUtil;
+import com.example.endpoint.user.servkce.UserService;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -54,9 +54,8 @@ public class LoginResourceTest {
     @Test
     @SneakyThrows
     public void shouldLogin() {
-        AuthenticationRequest authenticationRequest = new AuthenticationRequest();
-        authenticationRequest.setUsername("admin");
-        authenticationRequest.setPassword("admin");
+        AuthenticationRequest authenticationRequest = AuthenticationRequest
+                .builder().username("admin").password("admin").build();
         String jwt = "JWTSample";
         when(userService.loadUserByUsername(authenticationRequest.getUsername())).thenReturn(userDetails);
         when(jwtUtil.generateJWT(userDetails)).thenReturn(jwt);
@@ -76,9 +75,8 @@ public class LoginResourceTest {
     @Test
     @SneakyThrows
     public void shouldNotLoginAndThrowException() {
-        AuthenticationRequest authenticationRequest = new AuthenticationRequest();
-        authenticationRequest.setUsername("admin");
-        authenticationRequest.setPassword("admin");
+        AuthenticationRequest authenticationRequest = AuthenticationRequest
+                .builder().username("admin").password("admin").build();
         String message = "Incorrect username or password";
 
         when(authenticationManager.authenticate(any(UsernamePasswordAuthenticationToken.class)))
