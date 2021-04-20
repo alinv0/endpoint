@@ -16,10 +16,10 @@ Use the maven build tool to build the project.
 - Use Postman to access the endpoints.
 - The Endpoint Test application exposes 3 endpoints: /login, /accounts and /transactions
 - The application has a utility class ```SampleDataCreator``` which inserts dummy data in the ```endpoint-test``` mongo database, when application starts
+- The application uses a cache system which is updated once per day at 2:00 AM
 - To test the application security, try and issue GET requests for /transactions and /accounts - should deliver 403 response
 - Issue a POST request with username=password=admin - this will return a JWT as a response
 - Use retrieved JWT from the /login endpoint, in the Authorization header for any GET request for /accounts and /transactions
-
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
