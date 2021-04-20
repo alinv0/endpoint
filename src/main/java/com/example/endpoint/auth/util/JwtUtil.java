@@ -1,6 +1,7 @@
 package com.example.endpoint.auth.util;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.extern.log4j.Log4j2;
@@ -37,17 +38,17 @@ public class JwtUtil {
     }
 
     public boolean validateToken(String token, UserDetails userDetails) {
-        if (isTokenExpired(token)) {
-            log.error("JWT has expired");
-            throw new RuntimeException("Token expired");
-        }
-
         final String username = extractUsername(token);
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 
     private Claims extractAllClaims(String token) {
-        return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody();
+        try{
+            return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody();
+        } catch (ExpiredJwtException e) {
+            log.error("JWT has expired!");
+        }
+        return null;
     }
 
     private boolean isTokenExpired(String token) {
